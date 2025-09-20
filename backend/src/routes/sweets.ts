@@ -64,6 +64,22 @@ router.put("/:id", authenticate, requireAdmin, async (req, res) => {
 	}
 });
 
+router.patch("/:id", authenticate, requireAdmin, async (req, res) => {
+	const { id } = req.params;
+	const parsed = SweetSchema.partial().safeParse(req.body); 
+	if (!parsed.success)
+		return res.status(400).json({ error: parsed.error.issues });
+	try {
+		const sweet = await prisma.sweet.update({
+			where: { id: Number(id) },
+			data: parsed.data, 
+		});
+		res.json(sweet);
+	} catch {
+		res.status(404).json({ error: "Sweet not found" });
+	}
+});
+
 // ✅ Delete Sweet (Admin only)
 router.delete("/:id", authenticate, requireAdmin, async (req, res) => {
 	const id = parseInt(req.params.id);
