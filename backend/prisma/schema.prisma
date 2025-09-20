@@ -7,14 +7,27 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+model Order {
+    id        Int         @id @default(autoincrement())
+    user      User        @relation(fields: [userId], references: [id])
+    userId    Int
+    sweet     Sweet       @relation(fields: [sweetId], references: [id])
+    sweetId   Int
+    quantity  Int
+    total     Float
+    status    OrderStatus @default(PENDING)
+    createdAt DateTime    @default(now())
+}
+
 model User {
     id        Int      @id @default(autoincrement())
     email     String   @unique
     password  String
     name      String?
-    role      String   @default("user") // "user" | "admin"
+    role      Role     @default(USER)
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    Order     Order[]
 }
 
 model Sweet {
@@ -25,6 +38,18 @@ model Sweet {
     quantity  Int
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    Order     Order[]
 
     @@unique([name, category])
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+enum OrderStatus {
+    PENDING
+    CONFIRMED
+    CANCELLED
 }
