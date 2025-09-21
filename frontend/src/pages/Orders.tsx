@@ -77,19 +77,22 @@ const Orders = () => {
 							className="border px-2 py-1 rounded"
 						>
 							<option value="">Select Sweet</option>
-							{sweets.map((sweet) => (
-								<option key={sweet.id} value={sweet.id}>
-									{sweet.name} - ₹{sweet.price}
-								</option>
-							))}
+							{sweets
+								.slice()
+								.sort((a, b) => a.name.localeCompare(b.name))
+								.map((sweet) => (
+									<option key={sweet.id} value={sweet.id}>
+										{sweet.name} - ₹{sweet.price}
+									</option>
+								))}
 						</select>
 
 						{/* Show stock if a sweet is selected */}
 						{sweetId && (
 							<span className="text-gray-700">
 								Stock:{" "}
-								{sweets.find((s) => s.id === sweetId)?.quantity ??
-									0}
+								{sweets.find((s) => s.id === sweetId)
+									?.quantity ?? 0}
 							</span>
 						)}
 					</div>
