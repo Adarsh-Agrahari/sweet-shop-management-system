@@ -62,9 +62,21 @@ Backend : https://sweet-shop-management-system-be.vercel.app/
 ---
 ### 📸 Screenshots
 
-##### Customer Dashboard
+#### Customer Sweets Purchase Page
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/717d7155-6cc5-40b9-8022-78cef650a2b3" />
+
+
+#### Customer Orders Page
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/b444b564-3c4a-4760-a2f5-bc3bcc771259" />
+
+
+##### Admin Sweets Management
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/fd4fff65-c50f-439c-9776-929eb2ac2805" />
+
 
 ##### Admin Order Management
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/3fe35bf1-fde3-4aca-9221-0f86fab05733" />
+
 
 ---
 ### 🚀 Getting Started
