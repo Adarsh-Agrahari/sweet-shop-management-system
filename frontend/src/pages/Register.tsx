@@ -27,7 +27,7 @@ const Register = () => {
 
 	return (
 		<div className="max-w-md mx-auto mt-10 p-6 border rounded">
-			<h1 className="text-2xl mb-4">Register</h1>
+			<h1 className="text-2xl mb-4 flex justify-center">Register</h1>
 			{Array.isArray(error) ? (
 				<div className="text-red-500 mb-2">
 					{error.map((e: any, idx: number) => (
@@ -69,6 +69,17 @@ const Register = () => {
 					Register
 				</button>
 			</form>
+			<div className="flex items-center justify-center gap-2  mt-4 p-2">
+				<span className="flex items-center">
+					Already have an account?
+				</span>
+				<button
+					onClick={() => navigate("/login")}
+					className="text-blue-500 underline hover:text-blue-700 hover:cursor-pointer flex items-center"
+				>
+					Login here
+				</button>
+			</div>
 		</div>
 	);
 };

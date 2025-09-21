@@ -3,8 +3,13 @@ import { z } from "zod";
 import bcrypt from "bcrypt";
 import prisma from "../lib/prisma";
 import { signJwt } from "../utils/jwt";
+import { authenticate } from "../middleware/auth";
 
 const router = Router();
+
+router.get("/me", authenticate, async (req: any, res) => {
+	res.json({ user: req.user });
+});
 
 const RegisterSchema = z.object({
 	email: z.email(),

@@ -25,9 +25,22 @@ const Login = () => {
 		}
 	};
 
+	const demoLogin = async () => {
+		try {
+			const data = await login({
+				email: "admin@example.com",
+				password: "admin123",
+			});
+			setAuth(data.user, data.token);
+			navigate("/");
+		} catch (err: any) {
+			setError(err.response?.data?.error || "Login failed");
+		}
+	};
+
 	return (
 		<div className="max-w-md mx-auto mt-10 p-6 border rounded">
-			<h1 className="text-2xl mb-4">Login</h1>
+			<h1 className="text-2xl mb-4 flex justify-center">Login</h1>
 			{error && <div className="text-red-500 mb-2">{error}</div>}
 			<form onSubmit={handleSubmit} className="flex flex-col gap-3">
 				<input
@@ -53,6 +66,25 @@ const Login = () => {
 					Login
 				</button>
 			</form>
+			<div className="flex items-center justify-center gap-2  mt-4 p-2">
+				<span className="flex items-center">
+					Don't have an account?
+				</span>
+				<button
+					onClick={() => navigate("/register")}
+					className="text-blue-500 underline hover:text-blue-800 hover:cursor-pointer flex items-center"
+				>
+					Register here
+				</button>
+			</div>
+			<div>
+				<button
+					onClick={() => demoLogin()}
+					className="text-white mx-auto flex justify-center hover:cursor-pointer items-center border bg-green-400 hover:bg-green-600 px-4 py-2 rounded mt-4"
+				>
+					Demo Login
+				</button>
+			</div>
 		</div>
 	);
 };

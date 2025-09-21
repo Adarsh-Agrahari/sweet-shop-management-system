@@ -6,20 +6,69 @@ import Orders from "./pages/Orders";
 import ManageSweets from "./pages/Admin/ManageSweets";
 import ManageOrders from "./pages/Admin/ManageOrders";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AppInitializer from "./components/Auth";
+import PublicRoute from "./components/PublicRoute";
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-				<Route path="/" element={<Dashboard />} />
-				<Route path="/orders" element={<Orders />} />
-				<Route path="/admin/sweets" element={<ManageSweets />} />
-				<Route path="/admin/orders" element={<ManageOrders />} />
-        <Route path="*" element={<NotFound />} />
-			</Routes>
-		</BrowserRouter>
+		<AppInitializer>
+			<BrowserRouter>
+				<Navbar />
+				<Routes>
+					<Route
+						path="/login"
+						element={
+							<PublicRoute>
+								<Login />
+							</PublicRoute>
+						}
+					/>
+					<Route
+						path="/register"
+						element={
+							<PublicRoute>
+								<Register />
+							</PublicRoute>
+						}
+					/>
+					<Route
+						path="/"
+						element={
+							<ProtectedRoute>
+								<Dashboard />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/orders"
+						element={
+							<ProtectedRoute>
+								<Orders />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/admin/sweets"
+						element={
+							<ProtectedRoute adminOnly>
+								<ManageSweets />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/admin/orders"
+						element={
+							<ProtectedRoute adminOnly>
+								<ManageOrders />
+							</ProtectedRoute>
+						}
+					/>
+					<Route path="*" element={<NotFound />} />
+				</Routes>
+			</BrowserRouter>
+		</AppInitializer>
 	);
 }
 

@@ -5,7 +5,6 @@ export const register = async (data: {
 	email: string;
 	password: string;
 }) => {
-    console.log("Registering user with data:", data);
 	const res = await axiosInstance.post("/auth/register", data);
 	return res.data;
 };
