@@ -2,7 +2,9 @@
 
 A full-stack web application for managing a sweet shop. Customers can browse and order sweets, while admins can manage inventory, orders, and users.
 
-Built with Express + PostgreSQL + TypeScript on the backend and React + Zustand + Tailwind on the frontend.
+Frontend : https://sweet-shop-management-system.vercel.app/
+
+Backend : https://sweet-shop-management-system-be.vercel.app/
 
 ---
 ### ✨ Features
