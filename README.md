@@ -2,10 +2,6 @@
 
 A full-stack web application for managing a sweet shop. Customers can browse and order sweets, while admins can manage inventory, orders, and users.
 
-Frontend : https://sweet-shop-management-system-fe.vercel.app/
-
-Backend : https://sweet-shop-management-system-be.vercel.app/
-
 ---
 ### ✨ Features
 
